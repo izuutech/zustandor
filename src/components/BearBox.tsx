@@ -12,8 +12,6 @@ export default function BearBox() {
   //     const removeAllBears = useBearStore((state) => state.removeAllBears);
   const { bears, increasePopulation, removeAllBears } = useBearStore();
 
-  const fish = useFoodStore((state) => state.fish);
-
   useEffect(() => {
     // const unsub = useFoodStore.subscribe((state, prevState) => {
     //   if (prevState.fish <= 5 && state.fish > 5) {
