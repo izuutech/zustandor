@@ -4,9 +4,9 @@ import { useFoodStore } from "../stores/foodStore";
 import { shallow } from "zustand/shallow";
 
 export default function BearBox() {
-  const [bgColor, setBgColor] = useState<"lightgreen" | "lightpink">(
-    "lightpink"
-  );
+  const [bgColor, setBgColor] = useState<
+    "lightgreen" | "lightpink" | undefined
+  >(useFoodStore.getState().fish > 5 ? "lightgreen" : "lightpink");
   //   const bears = useBearStore((state) => state.bears);
   //   const increasePopulation = useBearStore((state) => state.increasePopulation);
   //     const removeAllBears = useBearStore((state) => state.removeAllBears);
@@ -23,13 +23,13 @@ export default function BearBox() {
     const unsub = useFoodStore.subscribe(
       (state) => state.fish,
       (fish, prevFish) => {
-        if (fish === prevFish) {
-          if (fish < 5) {
-            setBgColor("lightpink");
-          } else {
-            setBgColor("lightgreen");
-          }
-        }
+        // if (fish === prevFish) {
+        //   if (fish < 5) {
+        //     setBgColor("lightpink");
+        //   } else {
+        //     setBgColor("lightgreen");
+        //   }
+        // }
         if (prevFish <= 5 && fish > 5) {
           setBgColor("lightgreen");
         } else if (prevFish > 5 && fish <= 5) {
